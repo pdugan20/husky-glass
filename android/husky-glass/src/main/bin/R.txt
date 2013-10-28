@@ -317,6 +317,8 @@ int string common_google_play_services_update_text 0x7f080008
 int string common_google_play_services_update_title 0x7f080007
 int string common_signin_button_text 0x7f080011
 int string common_signin_button_text_long 0x7f080012
+int string test_card_body 0x7f08001e
+int string test_card_subtitle 0x7f08001d
 int style AppBaseTheme 0x7f060008
 int style AppTheme 0x7f060009
 int style CardLightText 0x7f060001

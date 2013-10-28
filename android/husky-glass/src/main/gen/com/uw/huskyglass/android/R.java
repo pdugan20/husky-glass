@@ -517,6 +517,8 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f080012;
+        public static final int test_card_body=0x7f08001e;
+        public static final int test_card_subtitle=0x7f08001d;
     }
     public static final class style {
         /** 

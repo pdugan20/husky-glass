@@ -5,5 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="button_test">View Cards</string>
     <string name="card_test_title">Card Test</string>
+    <string name="test_card_subtitle">Title</string>
+    <string name="test_card_body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra metus et ligula accumsan auctor. Nullam luctus neque quis nibh porttitor sagittis. Nunc dignissim quam nec quam scelerisque faucibus. Maecenas elementum ante eget felis vestibulum quis pharetra dui condimentum. In a ligula lectus, aliquet interdum diam. Fusce luctus bibendum tellus, sed iaculis mi vehicula vitae. Fusce quis ipsum in est ultricies egestas a vel orci.</string>
 
 </resources>

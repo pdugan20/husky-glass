@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
 
+@SuppressWarnings("unused")
 public class MyCardMainActivity extends Activity {
 
 	private CardUI mCardView;
