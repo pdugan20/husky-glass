@@ -3,5 +3,7 @@
 
     <string name="app_name">HuskyGlass</string>
     <string name="action_settings">Settings</string>
+    <string name="button_test">View Cards</string>
+    <string name="card_test_title">Card Test</string>
 
 </resources>

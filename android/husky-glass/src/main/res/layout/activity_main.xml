@@ -48,6 +48,21 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_btn_send"/>
         </LinearLayout>
+        
+        <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:paddingTop="1dp" >
+
+	    <Button
+	        android:id="@+id/card_test_button"
+	        android:layout_width="wrap_content"
+	        android:layout_height="50dp"
+	        android:gravity="center|left"
+	        android:text="@string/button_test"
+	        android:textSize="18sp" />
+	</LinearLayout>
 
     </LinearLayout>
 

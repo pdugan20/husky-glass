@@ -1,5 +1,15 @@
 package com.uw.huskyglass.android;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.uw.huskyglass.android.R;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,19 +24,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.uw.huskyglass.android.R;
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.common.AccountPicker;
-import org.apache.http.HttpResponse;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MainActivity extends Activity {
     private static final String TAG = "Glass";
@@ -51,6 +52,7 @@ public class MainActivity extends Activity {
     private String mAuthToken;
     private Button mStartAuthButton;
     private Button mExpireTokenButton;
+    private Button cardTestButton;
     private ImageButton mNewCardButton;
     private EditText mNewCardEditText;
 
@@ -64,6 +66,7 @@ public class MainActivity extends Activity {
         // Get our views
         mStartAuthButton = (Button) findViewById(R.id.oauth_button);
         mExpireTokenButton = (Button) findViewById(R.id.oauth_expire_button);
+        cardTestButton = (Button) findViewById(R.id.card_test_button);
         mNewCardButton = (ImageButton) findViewById(R.id.new_card_button);
         mNewCardEditText = (EditText) findViewById(R.id.new_card_message);
 
@@ -105,6 +108,14 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 createNewTimelineItem();
             }
+        });
+        
+        cardTestButton.setOnClickListener(new View.OnClickListener() {
+        	@Override
+			public void onClick(View v) {
+        		Intent i = new Intent(MainActivity.this, MyCardMainActivity.class);
+        	    startActivity(i);  
+        	}
         });
     }
 
