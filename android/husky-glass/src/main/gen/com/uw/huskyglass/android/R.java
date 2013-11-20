@@ -371,38 +371,38 @@ containing a value of this type.
         public static final int ic_plusone_small_off_client=0x7f020023;
         public static final int ic_plusone_standard_off_client=0x7f020024;
         public static final int ic_plusone_tall_off_client=0x7f020025;
-        public static final int selectable_background_cardbank=0x7f020026;
-        public static final int top_shadow=0x7f020027;
-        public static final int url1=0x7f020028;
-        public static final int url2=0x7f020029;
-        public static final int url3=0x7f02002a;
+        public static final int playcard01=0x7f020026;
+        public static final int selectable_background_cardbank=0x7f020027;
+        public static final int top_shadow=0x7f020028;
     }
     public static final class id {
-        public static final int ScrollView1=0x7f070011;
-        public static final int action_settings=0x7f070018;
-        public static final int button_bar=0x7f070008;
-        public static final int cardContent=0x7f070015;
+        public static final int ScrollView1=0x7f070013;
+        public static final int action_settings=0x7f07001a;
+        public static final int button_bar=0x7f07000a;
+        public static final int cardContent=0x7f070017;
         public static final int card_test_button=0x7f070007;
-        public static final int cardsview=0x7f07000d;
-        public static final int description=0x7f07000c;
+        public static final int cardsview=0x7f07000f;
+        public static final int description=0x7f07000e;
+        public static final int hangout_test_button=0x7f070008;
         public static final int hybrid=0x7f070004;
-        public static final int imageView1=0x7f07000e;
-        public static final int listView=0x7f07000f;
+        public static final int imageView1=0x7f070010;
+        public static final int listView=0x7f070011;
         public static final int new_card_button=0x7f070006;
         public static final int new_card_message=0x7f070005;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
-        public static final int oauth_button=0x7f07000a;
-        public static final int oauth_expire_button=0x7f070009;
-        public static final int placeholder=0x7f070013;
+        public static final int oauth_button=0x7f07000c;
+        public static final int oauth_expire_button=0x7f07000b;
+        public static final int placeholder=0x7f070015;
+        public static final int playCard1=0x7f070009;
         public static final int satellite=0x7f070002;
-        public static final int stackContainer=0x7f070017;
-        public static final int stackTitle=0x7f070016;
-        public static final int sticky=0x7f070010;
-        public static final int tableLayout=0x7f070012;
+        public static final int stackContainer=0x7f070019;
+        public static final int stackTitle=0x7f070018;
+        public static final int sticky=0x7f070012;
+        public static final int tableLayout=0x7f070014;
         public static final int terrain=0x7f070003;
-        public static final int textView2=0x7f070014;
-        public static final int title=0x7f07000b;
+        public static final int textView2=0x7f070016;
+        public static final int title=0x7f07000d;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -449,7 +449,7 @@ containing a value of this type.
          */
         public static final int auth_client_using_bad_version_title=0x7f080013;
         public static final int button_test=0x7f08001b;
-        public static final int card_test_title=0x7f08001c;
+        public static final int card_test_title=0x7f08001d;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -517,8 +517,9 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f080012;
-        public static final int test_card_body=0x7f08001e;
-        public static final int test_card_subtitle=0x7f08001d;
+        public static final int hangout_button_test=0x7f08001c;
+        public static final int test_card_body=0x7f08001f;
+        public static final int test_card_subtitle=0x7f08001e;
     }
     public static final class style {
         /** 

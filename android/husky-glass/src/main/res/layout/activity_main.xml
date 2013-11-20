@@ -62,7 +62,22 @@
 	        android:gravity="center|left"
 	        android:text="@string/button_test"
 	        android:textSize="18sp" />
+	    
+	    <Button
+	        android:id="@+id/hangout_test_button"
+	        android:layout_width="wrap_content"
+	        android:layout_height="50dp"
+	        android:gravity="center|left"
+	        android:text="@string/hangout_button_test"
+	        android:textSize="18sp" />
+	    
 	</LinearLayout>
+
+        <ImageView
+            android:id="@+id/playCard1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/playcard01" />
 
     </LinearLayout>
 

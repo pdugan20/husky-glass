@@ -46,20 +46,23 @@ public class MyCardMainActivity extends Activity {
 
 		// add one card
 		MyImageCard husky1 = new MyImageCard("Husky Card 1",R.drawable.card1);
-		MyImageCard husky2 = new MyImageCard("Husky Card 2",R.drawable.card2);
-		MyImageCard husky3 = new MyImageCard("Husky Card 3", R.drawable.card3);
+		// MyImageCard husky2 = new MyImageCard("Husky Card 2",R.drawable.card2);
+		// MyImageCard husky3 = new MyImageCard("Husky Card 3", R.drawable.card3);
 		
 		mCardView.addCardToLastStack(husky1);
-		mCardView.addCardToLastStack(husky2);
-		mCardView.addCardToLastStack(husky3);
+		// mCardView.addCardToLastStack(husky2);
+		// mCardView.addCardToLastStack(husky3);
 		
 		husky1.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse("http://www.androidviews.net/"));
-				startActivity(intent);
+				// Intent intent = new Intent(Intent.ACTION_VIEW);
+				// intent.setData(Uri.parse("http://www.androidviews.net/"));
+				// startActivity(intent);
+				
+				MainActivity mainActivity = new MainActivity();
+				mainActivity.createNewTimelineItem();
 
 			}
 		});

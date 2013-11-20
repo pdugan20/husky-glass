@@ -16,7 +16,7 @@ public class MyImageCard extends Card {
 
 	@Override
 	public View getCardContent(Context context) {
-		View view = LayoutInflater.from(context).inflate(R.layout.card_picture_full, null);
+		View view = LayoutInflater.from(context).inflate(R.layout.card_picture, null);
 
 		((TextView) view.findViewById(R.id.title)).setText(title);
 		((ImageView) view.findViewById(R.id.imageView1)).setImageResource(image);

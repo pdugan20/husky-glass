@@ -13,6 +13,7 @@ import com.uw.huskyglass.android.R;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.GoogleAuthException;
@@ -53,7 +55,9 @@ public class MainActivity extends Activity {
     private Button mStartAuthButton;
     private Button mExpireTokenButton;
     private Button cardTestButton;
+    private Button hangoutTestButton;
     private ImageButton mNewCardButton;
+    private ImageView playCardButton;
     private EditText mNewCardEditText;
 
     @Override
@@ -67,8 +71,10 @@ public class MainActivity extends Activity {
         mStartAuthButton = (Button) findViewById(R.id.oauth_button);
         mExpireTokenButton = (Button) findViewById(R.id.oauth_expire_button);
         cardTestButton = (Button) findViewById(R.id.card_test_button);
+        hangoutTestButton = (Button) findViewById(R.id.hangout_test_button);
         mNewCardButton = (ImageButton) findViewById(R.id.new_card_button);
-        mNewCardEditText = (EditText) findViewById(R.id.new_card_message);
+        mNewCardEditText = (EditText) findViewById(R.id.new_card_message); 
+        playCardButton = (ImageView) findViewById(R.id.playCard1);
 
         // Restore any saved instance state
         if (savedInstanceState != null) {
@@ -110,6 +116,13 @@ public class MainActivity extends Activity {
             }
         });
         
+        playCardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createNewTimelineItem();
+            }
+        });
+        
         cardTestButton.setOnClickListener(new View.OnClickListener() {
         	@Override
 			public void onClick(View v) {
@@ -117,6 +130,15 @@ public class MainActivity extends Activity {
         	    startActivity(i);  
         	}
         });
+        
+        hangoutTestButton.setOnClickListener(new View.OnClickListener() {
+        	@Override
+			public void onClick(View v) {
+        		Intent qbHangout = new Intent("android.intent.action.VIEW", Uri.parse("https://talkgadget.google.com/hangouts/extras/talk.google.com/husky-qb"));
+        		startActivity(qbHangout);
+        	}
+        });
+        
     }
 
     @Override
@@ -161,16 +183,26 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void createNewTimelineItem() {
+    // private void createNewTimelineItem() {
+    void createNewTimelineItem() {
         if (!TextUtils.isEmpty(mAuthToken)) {
             String message = mNewCardEditText.getText().toString();
-            if (!TextUtils.isEmpty(message)) {
+            // if (!TextUtils.isEmpty(message)) {
                 try {
                     JSONObject notification = new JSONObject();
                     notification.put("level", "DEFAULT"); // Play a chime
 
                     JSONObject json = new JSONObject();
-                    json.put("text", message);
+                    // json.put("text", message);
+                    // json.put("notification", notification);
+                    
+                    String testCard = "<article class=\"photo\" style=\"left:0px;visibility:visible\">" +
+                    				  "<img src=\"https://huskyglass.appspot.com/static/images/01.png\" width=\"100%\" height=\"100%\">" +
+  									  "<section>" +
+  									  "<p class=\"text-normal\" style=\"text-align:right\">Flea Flicker</p>" +
+  									  "</section></article>";
+                    
+                    json.put("html", testCard);
                     json.put("notification", notification);
 
                     MirrorApiClient client = MirrorApiClient.getInstance(this);
@@ -204,10 +236,10 @@ public class MainActivity extends Activity {
             } else {
                 Toast.makeText(this, "Sorry, can't create an empty timeline item",
                         Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(this, "Sorry, can't create a new timeline card without a token",
-                    Toast.LENGTH_LONG).show();
+        //    }
+        // } else {
+        //    Toast.makeText(this, "Sorry, can't create a new timeline card without a token",
+        //            Toast.LENGTH_LONG).show();
         }
     }
 
