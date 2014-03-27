@@ -17,3 +17,20 @@ table td form, table td input[type='text'], table td button {
 img.button-icon {
     width: 60px;
 }
+
+.alert-info {
+	background-color:#F9EDBE;
+	border-color:#F0C36E;
+	color:#222222;
+	box-shadow: 0 2px 4px RGBA(0,0,0,0.2);
+	text-align: center;
+	margin: 0 auto 0 auto;
+}
+
+input.playbook-img {
+	width:100%;
+}
+
+div.span12 {
+	margin-left:0px;
+}

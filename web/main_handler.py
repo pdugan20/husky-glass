@@ -179,7 +179,7 @@ class MainHandler(webapp2.RequestHandler):
 
     # self.mirror_service is initialized in util.auth_required.
     self.mirror_service.timeline().insert(body=body, media_body=media).execute()
-    return  'A timeline item has been inserted.'
+    return  'A playcard has been successfully pushed.'
 
   def _insert_paginated_item(self):
     """Insert a paginated timeline item."""
