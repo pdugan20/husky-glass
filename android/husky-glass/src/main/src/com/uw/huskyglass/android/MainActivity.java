@@ -13,7 +13,8 @@ import com.uw.huskyglass.android.R;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
+// import android.content.SharedPreferences;
+// import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -21,8 +22,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
+// import android.widget.EditText;
+// import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -53,12 +54,11 @@ public class MainActivity extends Activity {
 
     private String mAuthToken;
     private Button mStartAuthButton;
-    private Button mExpireTokenButton;
-    private Button cardTestButton;
-    private Button hangoutTestButton;
-    private ImageButton mNewCardButton;
     private ImageView playCardButton;
-    private EditText mNewCardEditText;
+    // private EditText mNewCardEditText;
+    
+    // persistent oauth
+    // private static SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +69,6 @@ public class MainActivity extends Activity {
 
         // Get our views
         mStartAuthButton = (Button) findViewById(R.id.oauth_button);
-        mExpireTokenButton = (Button) findViewById(R.id.oauth_expire_button);
-        cardTestButton = (Button) findViewById(R.id.card_test_button);
-        hangoutTestButton = (Button) findViewById(R.id.hangout_test_button);
-        mNewCardButton = (ImageButton) findViewById(R.id.new_card_button);
-        mNewCardEditText = (EditText) findViewById(R.id.new_card_message); 
         playCardButton = (ImageView) findViewById(R.id.playCard1);
 
         // Restore any saved instance state
@@ -81,7 +76,6 @@ public class MainActivity extends Activity {
             onTokenResult(savedInstanceState.getString(PARAM_AUTH_TOKEN));
         } else {
             mStartAuthButton.setEnabled(true);
-            mExpireTokenButton.setEnabled(false);
         }
 
         mStartAuthButton.setOnClickListener(new View.OnClickListener() {
@@ -95,26 +89,6 @@ public class MainActivity extends Activity {
                 startActivityForResult(intent, REQUEST_ACCOUNT_PICKER);
             }
         });
-
-        mExpireTokenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!TextUtils.isEmpty(mAuthToken)) {
-                    // Expire the token, if any
-                    GoogleAuthUtil.invalidateToken(MainActivity.this, mAuthToken);
-                    mAuthToken = null;
-                    mExpireTokenButton.setEnabled(false);
-                    mStartAuthButton.setEnabled(true);
-                }
-            }
-        });
-
-        mNewCardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createNewTimelineItem();
-            }
-        });
         
         playCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,23 +96,7 @@ public class MainActivity extends Activity {
                 createNewTimelineItem();
             }
         });
-        
-        cardTestButton.setOnClickListener(new View.OnClickListener() {
-        	@Override
-			public void onClick(View v) {
-        		Intent i = new Intent(MainActivity.this, MyCardMainActivity.class);
-        	    startActivity(i);  
-        	}
-        });
-        
-        hangoutTestButton.setOnClickListener(new View.OnClickListener() {
-        	@Override
-			public void onClick(View v) {
-        		Intent qbHangout = new Intent("android.intent.action.VIEW", Uri.parse("https://talkgadget.google.com/hangouts/extras/talk.google.com/husky-qb"));
-        		startActivity(qbHangout);
-        	}
-        });
-        
+       
     }
 
     @Override
@@ -186,7 +144,7 @@ public class MainActivity extends Activity {
     // private void createNewTimelineItem() {
     void createNewTimelineItem() {
         if (!TextUtils.isEmpty(mAuthToken)) {
-            String message = mNewCardEditText.getText().toString();
+            // String message = mNewCardEditText.getText().toString();
             // if (!TextUtils.isEmpty(message)) {
                 try {
                     JSONObject notification = new JSONObject();
@@ -247,11 +205,9 @@ public class MainActivity extends Activity {
         Log.d(TAG, "onTokenResult: " + token);
         if (!TextUtils.isEmpty(token)) {
             mAuthToken = token;
-            mExpireTokenButton.setEnabled(true);
             mStartAuthButton.setEnabled(false);
             Toast.makeText(this, "New token result", Toast.LENGTH_SHORT).show();
         } else {
-            mExpireTokenButton.setEnabled(false);
             mStartAuthButton.setEnabled(true);
             Toast.makeText(this, "Sorry, invalid token result", Toast.LENGTH_SHORT).show();
         }

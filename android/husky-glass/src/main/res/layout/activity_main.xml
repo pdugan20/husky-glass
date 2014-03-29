@@ -1,16 +1,16 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:gravity="center_horizontal|right"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:weightSum="4" >
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -20,67 +20,98 @@
             style="?android:listSeparatorTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Card to Timeline"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/new_card_message"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:inputType="textCapSentences"
-                android:maxLines="1"
-                android:hint="Message"/>
-
-            <ImageButton
-                android:id="@+id/new_card_button"
-                style="?android:borderlessButtonStyle"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="4dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="Send"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_btn_send"/>
-        </LinearLayout>
-        
-        <LinearLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal"
-	    android:paddingTop="1dp" >
-
-	    <Button
-	        android:id="@+id/card_test_button"
-	        android:layout_width="wrap_content"
-	        android:layout_height="50dp"
-	        android:gravity="center|left"
-	        android:text="@string/button_test"
-	        android:textSize="18sp" />
-	    
-	    <Button
-	        android:id="@+id/hangout_test_button"
-	        android:layout_width="wrap_content"
-	        android:layout_height="50dp"
-	        android:gravity="center|left"
-	        android:text="@string/hangout_button_test"
-	        android:textSize="18sp" />
-	    
-	</LinearLayout>
-
-        <ImageView
-            android:id="@+id/playCard1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/playcard01" />
+            android:text="Husky Playbook"/>
 
     </LinearLayout>
 
+    <ScrollView 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_weight="4" > 
+        
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical" >
+
+            <TextView
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="3dp"
+                android:text="Play #1" />
+
+            <ImageView
+                android:id="@+id/playCard1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/playcard01_light" />
+
+            <TextView
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="10dp"
+                android:text="Play #2" />
+
+            <ImageView
+                android:id="@+id/playCard2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/playcard01_light" />
+
+            <TextView
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="10dp"
+                android:text="Play #3" />
+
+            <ImageView
+                android:id="@+id/playCard3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/playcard01_light" />
+            
+            <TextView
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="10dp"
+                android:text="Play #4" />
+
+            <ImageView
+                android:id="@+id/playCard4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/playcard01_light" />
+            
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -93,16 +124,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <Button
-            style="?android:buttonBarButtonStyle"
-            android:id="@+id/oauth_expire_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Expire Token"
-            android:enabled="false"/>
+        android:layout_alignParentBottom="true"
+        android:layout_weight="10">
 
         <Button
             style="?android:buttonBarButtonStyle"
@@ -110,7 +133,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Start OAuth"
+            android:text="Login to HuskyGlass"
             android:enabled="false"/>
     </LinearLayout>
 

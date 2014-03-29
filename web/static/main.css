@@ -34,3 +34,25 @@ input.playbook-img {
 div.span12 {
 	margin-left:0px;
 }
+
+li.new-active {
+	background-color: #39275B;
+	text-decoration: underline;
+}
+
+.play-text {
+	position:relative;
+	top:30px;
+	left:10px;
+	visibility:hidden;
+	z-index: 100;
+}
+
+.playbook-parent:hover .play-text {
+	visibility:visible;
+	font-size: 23px;
+}
+
+.playbook-parent:hover .playbook-img {
+	opacity:0.5;
+}
