@@ -54,6 +54,12 @@ For more cat maintenance tips, tap to view the website!</p>
 </article>
 """
 
+PLAYCARD_HTML = """
+<article class='photo' style='left:0px;visibility:visible'>
+<img src='https://huskyglass.appspot.com/static/images/01.png' width='100%' height='100%'>
+<section><p class='text-normal' style='text-align:right'>Flea Flicker</p>
+</section></article>
+"""
 
 class _BatchCallback(object):
   """Class used to track batch request responses."""
@@ -124,6 +130,7 @@ class MainHandler(webapp2.RequestHandler):
         'deleteSubscription': self._delete_subscription,
         'insertItem': self._insert_item,
         'insertPaginatedItem': self._insert_paginated_item,
+        'insertPlaycard': self._insert_playcard,
         'insertItemWithAction': self._insert_item_with_action,
         'insertItemAllUsers': self._insert_item_all_users,
         'insertContact': self._insert_contact,
@@ -190,6 +197,21 @@ class MainHandler(webapp2.RequestHandler):
         'menuItems': [{
             'action': 'OPEN_URI',
             'payload': 'https://www.google.com/search?q=cat+maintenance+tips'
+        }]
+    }
+    # self.mirror_service is initialized in util.auth_required.
+    self.mirror_service.timeline().insert(body=body).execute()
+    return  'A timeline item has been inserted.'
+    
+  def _insert_playcard(self):
+    """Insert a paginated timeline item."""
+    logging.info('Inserting paginated timeline item')
+    body = {
+        'html': PLAYCARD_HTML,
+        'notification': {'level': 'DEFAULT'},
+        'text': 'The Flea Flicker is a quick down and out for a receiver.',
+        'menuItems': [{
+            'action': 'READ_ALOUD'
         }]
     }
     # self.mirror_service is initialized in util.auth_required.
