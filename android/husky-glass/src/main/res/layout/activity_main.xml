@@ -103,14 +103,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/playcard01_light" />
+                android:src="@drawable/playcard01_light"
+                android:layout_marginBottom="15dp" />
             
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
-
     
     <View
         android:layout_width="match_parent"
