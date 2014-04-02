@@ -54,13 +54,6 @@ For more cat maintenance tips, tap to view the website!</p>
 </article>
 """
 
-PLAYCARD_HTML = """
-<article class='photo' style='left:0px;visibility:visible'>
-<img src='https://huskyglass.appspot.com/static/images/01.png' width='100%' height='100%'>
-<section><p class='text-normal' style='text-align:right'>Flea Flicker</p>
-</section></article>
-"""
-
 class _BatchCallback(object):
   """Class used to track batch request responses."""
 
@@ -206,10 +199,21 @@ class MainHandler(webapp2.RequestHandler):
   def _insert_playcard(self):
     """Insert a paginated timeline item."""
     logging.info('Inserting paginated timeline item')
+    
+    playImg = self.request.get('play-img')
+    playTitle = self.request.get('play-title')
+    playDescription = self.request.get('play-desc')
+    
+    PLAYCARD_HTML = """
+    <article class='photo' style='left:0px;visibility:visible'>
+    <img src='""" + playImg + """' width='100%' height='100%'>
+    <section><p class='text-normal' style='text-align:right'>""" + playTitle + """</p></section></article>
+    """
+    
     body = {
         'html': PLAYCARD_HTML,
         'notification': {'level': 'DEFAULT'},
-        'text': 'The Flea Flicker is a quick down and out for a receiver.',
+        'text': playDescription,
         'menuItems': [{
             'action': 'READ_ALOUD'
         }]
