@@ -48,14 +48,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginBottom="3dp"
-                android:text="Play #1" />
+                android:text="01. Glass Pass" />
 
             <ImageView
                 android:id="@+id/playCard1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/playcard01_light" />
+                android:src="@drawable/playcard_01_light" />
 
             <TextView
                 style="@android:style/TextAppearance.Medium"
@@ -64,14 +64,14 @@
                 android:layout_gravity="left"
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="10dp"
-                android:text="Play #2" />
+                android:text="02. Glass QB Sneak" />
 
             <ImageView
                 android:id="@+id/playCard2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/playcard01_light" />
+                android:src="@drawable/playcard_02_light" />
 
             <TextView
                 style="@android:style/TextAppearance.Medium"
@@ -80,14 +80,14 @@
                 android:layout_gravity="left"
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="10dp"
-                android:text="Play #3" />
+                android:text="03. Glass and Out" />
 
             <ImageView
                 android:id="@+id/playCard3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/playcard01_light" />
+                android:src="@drawable/playcard_03_light" />
             
             <TextView
                 style="@android:style/TextAppearance.Medium"
@@ -96,14 +96,14 @@
                 android:layout_gravity="left"
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="10dp"
-                android:text="Play #4" />
+                android:text="04. Glass Shuffle Pass" />
 
             <ImageView
                 android:id="@+id/playCard4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/playcard01_light"
+                android:src="@drawable/playcard_01_light"
                 android:layout_marginBottom="15dp" />
             
             </LinearLayout>

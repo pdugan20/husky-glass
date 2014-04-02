@@ -163,9 +163,9 @@ public class MainActivity extends Activity {
 			try {
 
 				String testCard = "<article class=\"photo\" style=\"left:0px;visibility:visible\">"
-						+ "<img src=\"https://huskyglass.appspot.com/static/images/01.png\" width=\"100%\" height=\"100%\">"
+						+ "<img src=\"https://huskyglass.appspot.com/static/images/playcard_01.png\" width=\"100%\" height=\"100%\">"
 						+ "<section>"
-						+ "<p class=\"text-normal\" style=\"text-align:right\">Flea Flicker</p>"
+						+ "<p class=\"text-normal\" style=\"text-align:right\"></p>"
 						+ "</section></article>";
 
 				JSONObject notification = new JSONObject();
@@ -191,10 +191,10 @@ public class MainActivity extends Activity {
 				parentCard.put("notification", notification);
 
 				// Top-level child JSON elements
-				parentCard.put("title", "Flea Flicker");
+				parentCard.put("title", "Glass Pass");
 				parentCard
 						.put("text",
-								"The Flea Flicker is a quick down and out for a receiver.");
+								"The Glass Pass is a short pass to a downfield receiver.");
 				parentCard.put("html", testCard);
 
 				parentCard.put("menuItems", menuItems);
