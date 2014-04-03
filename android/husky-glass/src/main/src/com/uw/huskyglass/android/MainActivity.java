@@ -17,6 +17,7 @@ import android.content.Intent;
 // import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -51,28 +52,29 @@ public class MainActivity extends Activity {
 
 	private String mAuthToken;
 	private Button mStartAuthButton;
-	// private Button mExpireTokenButton;
-	// private Button cardTestButton;
-	// private Button hangoutTestButton;
-	// private ImageButton mNewCardButton;
-	// private EditText mNewCardEditText;
-	private ImageView playCardButton;
+	private ImageView playCard00;
+	private ImageView playCard01;
+	private ImageView playCard02;
+	private ImageView playCard03;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		// Allow networking on the main thread (really bad)
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 
 		// Define our layout
 		setContentView(R.layout.activity_main);
 
 		// Get our views
 		mStartAuthButton = (Button) findViewById(R.id.oauth_button);
-		// mExpireTokenButton = (Button) findViewById(R.id.oauth_expire_button);
-		// cardTestButton = (Button) findViewById(R.id.card_test_button);
-		// hangoutTestButton = (Button) findViewById(R.id.hangout_test_button);
-		// mNewCardButton = (ImageButton) findViewById(R.id.new_card_button);
-		// mNewCardEditText = (EditText) findViewById(R.id.new_card_message);
-		playCardButton = (ImageView) findViewById(R.id.playCard1);
+		playCard00 = (ImageView) findViewById(R.id.playCard1);
+		playCard01 = (ImageView) findViewById(R.id.playCard2);
+		playCard02 = (ImageView) findViewById(R.id.playCard3);
+		playCard03 = (ImageView) findViewById(R.id.playCard4);
 
 		// Restore any saved instance state
 		if (savedInstanceState != null) {
@@ -95,20 +97,43 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		/*
-		 * mExpireTokenButton.setOnClickListener(new View.OnClickListener() {
-		 * 
-		 * @Override public void onClick(View view) { if
-		 * (!TextUtils.isEmpty(mAuthToken)) { // Expire the token, if any
-		 * GoogleAuthUtil.invalidateToken(MainActivity.this, mAuthToken);
-		 * mAuthToken = null; mExpireTokenButton.setEnabled(false);
-		 * mStartAuthButton.setEnabled(true); } } });
-		 */
-
-		playCardButton.setOnClickListener(new View.OnClickListener() {
+		playCard00.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				createNewTimelineItem();
+				String playName = "Glass Pass";
+				String playDesc = "The Glass Pass is a short pass to a downfield receiver.";
+				String playImg = "https://huskyglass.appspot.com/static/images/playcard_01.png";
+				createNewTimelineItem(playName, playDesc, playImg);
+			}
+		});
+		
+		playCard01.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				String playName = "Glass QB Sneak";
+				String playDesc = "The Glass QB Sneak provides the QB an option to pass or run.";
+				String playImg = "https://huskyglass.appspot.com/static/images/playcard_02.png";
+				createNewTimelineItem(playName, playDesc, playImg);
+			}
+		});
+		
+		playCard02.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				String playName = "Glass and Out";
+				String playDesc = "The Glass and out is a play with options for short passes or a quick run.";
+				String playImg = "https://huskyglass.appspot.com/static/images/playcard_03.png";
+				createNewTimelineItem(playName, playDesc, playImg);
+			}
+		});
+		
+		playCard03.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				String playName = "Glass Shuffle Pass";
+				String playDesc = "The Glass Shuffle Pass provides the QB the option for a quick handoff.";
+				String playImg = "https://huskyglass.appspot.com/static/images/playcard_01.png";
+				createNewTimelineItem(playName, playDesc, playImg);
 			}
 		});
 
@@ -156,14 +181,14 @@ public class MainActivity extends Activity {
 	}
 
 	// private void createNewTimelineItem() {
-	void createNewTimelineItem() {
+	void createNewTimelineItem(String playName, String playDesc, String playImg) {
 		if (!TextUtils.isEmpty(mAuthToken)) {
-			// String message = mNewCardEditText.getText().toString();
-			// if (!TextUtils.isEmpty(message)) {
 			try {
 
 				String testCard = "<article class=\"photo\" style=\"left:0px;visibility:visible\">"
-						+ "<img src=\"https://huskyglass.appspot.com/static/images/playcard_01.png\" width=\"100%\" height=\"100%\">"
+						+ "<img src=\""
+						+ playImg
+						+ "\" width=\"100%\" height=\"100%\">"
 						+ "<section>"
 						+ "<p class=\"text-normal\" style=\"text-align:right\"></p>"
 						+ "</section></article>";
@@ -191,10 +216,8 @@ public class MainActivity extends Activity {
 				parentCard.put("notification", notification);
 
 				// Top-level child JSON elements
-				parentCard.put("title", "Glass Pass");
-				parentCard
-						.put("text",
-								"The Glass Pass is a short pass to a downfield receiver.");
+				parentCard.put("title", playName);
+				parentCard.put("text", playDesc);
 				parentCard.put("html", testCard);
 
 				parentCard.put("menuItems", menuItems);

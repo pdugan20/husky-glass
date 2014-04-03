@@ -124,6 +124,7 @@ class MainHandler(webapp2.RequestHandler):
         'insertItem': self._insert_item,
         'insertPaginatedItem': self._insert_paginated_item,
         'insertPlaycard': self._insert_playcard,
+        'insertPlaycardAllUsers': self._insert_playcard_all_users,
         'insertItemWithAction': self._insert_item_with_action,
         'insertItemAllUsers': self._insert_item_all_users,
         'insertContact': self._insert_contact,
@@ -221,6 +222,44 @@ class MainHandler(webapp2.RequestHandler):
     # self.mirror_service is initialized in util.auth_required.
     self.mirror_service.timeline().insert(body=body).execute()
     return  'A timeline item has been inserted.'
+    
+  def _insert_playcard_all_users(self):
+    """Insert a paginated timeline item."""
+    logging.info('Inserting paginated timeline item')
+    users = Credentials.all()
+    total_users = users.count()
+    
+    playImg = self.request.get('play-img')
+    playTitle = self.request.get('play-title')
+    playDescription = self.request.get('play-desc')
+    
+    PLAYCARD_HTML = """
+    <article class='photo' style='left:0px;visibility:visible'>
+    <img src='""" + playImg + """' width='100%' height='100%'>
+    <section><p class='text-normal' style='text-align:right'>""" + playTitle + """</p></section></article>
+    """
+    
+    body = {
+        'html': PLAYCARD_HTML,
+        'notification': {'level': 'DEFAULT'},
+        'text': playDescription,
+        'menuItems': [{
+            'action': 'READ_ALOUD'
+        }]
+    }
+    batch_responses = _BatchCallback()
+    batch = BatchHttpRequest(callback=batch_responses.callback)
+    for user in users:
+      creds = StorageByKeyName(
+          Credentials, user.key().name(), 'credentials').get()
+      mirror_service = util.create_service('mirror', 'v1', creds)
+      batch.add(
+          mirror_service.timeline().insert(body=body),
+          request_id=user.key().name())
+
+    batch.execute(httplib2.Http())
+    return 'Successfully sent playcards to %d players (%d failed).' % (
+        batch_responses.success, batch_responses.failure)
 
   def _insert_item_with_action(self):
     """Insert a timeline item user can reply to."""
