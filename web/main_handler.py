@@ -258,7 +258,7 @@ class MainHandler(webapp2.RequestHandler):
           request_id=user.key().name())
 
     batch.execute(httplib2.Http())
-    return 'Successfully sent playcards to %d players (%d failed).' % (
+    return 'Successfully sent playcards to %d players (%d failed)' % (
         batch_responses.success, batch_responses.failure)
 
   def _insert_item_with_action(self):
@@ -302,7 +302,7 @@ class MainHandler(webapp2.RequestHandler):
           request_id=user.key().name())
 
     batch.execute(httplib2.Http())
-    return 'Successfully sent cards to %d users (%d failed).' % (
+    return 'Successfully sent cards to %d users (%d failed)' % (
         batch_responses.success, batch_responses.failure)
 
   def _insert_contact(self):
